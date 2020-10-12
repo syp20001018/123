@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html style="background-image: /image/1.jpg;">
+
+<head>
+    <meta charset="utf-8" />
+    <title>登录界面</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url(image/2024117.jpg);
+            background-repeat: no-repeat;
+            /* 背景图片不重复 */
+        }
+        
+        #bigBox {
+            margin: 0 auto;
+            /* login框剧中 */
+            margin-top: 200px;
+            /* login框与顶部的距离 */
+            padding: 20px 50px;
+            /* login框内部的距离(内部与输入框和按钮的距离) */
+            background-color: #00000090;
+            /* login框背景颜色和透明度 */
+            width: 400px;
+            height: 400px;
+            border-radius: 10px;
+            /* 圆角边 */
+            text-align: center;
+            /* 框内所有内容剧中 */
+            gap: 20px 20px;
+        }
+        
+        #bigBox h1 {
+            color: white;
+            /* LOGIN字体颜色 */
+        }
+        
+        #bigBox .inputBox {
+            margin-top: 50px;
+            /* 输入框顶部与LOGIN标题的间距 */
+        }
+        
+        #bigBox .inputBox .inputText {
+            margin-top: 20px;
+            /* 输入框之间的距离 */
+        }
+        
+        input,
+        textarea {
+            font: 1em sans-serif;
+            width: 300px;
+            height: 40px;
+            box-sizing: border-box;
+            border: 1px solid #999;
+        }
+        
+        button {
+            margin-left: 50px;
+            background-color: yellow;
+            width: 200px;
+            height: 40px;
+        }
+    </style>
+    <script>
+        function changeCode() {
+            var codeImg = document.getElementById("login");
+            codeImg.src = "servlet/CreateVerifyImageController?t=" + Math.random();
+        }
+    </script>
+
+</head>
+
+<body>
+
+
+    <div id="bigBox">
+
+        <h1>LOGIN</h1>
+        <form action="servlet/LoginController" method="GET">
+            <div class="inputText">
+
+                <input type="text" id="name" name="user_name" placeholder="用户名" />
+            </div>
+            <br/>
+            <div class="inputText">
+
+                <input type="password" id="password" name="password" placeholder="密码" />
+            </div>
+            <br/>
+            <div class="inputText">
+
+                <input type="text" name="userCode" id="userCode" style="width: 45%;" placeholder="请输入验证码">
+                <img style="width: 35%;height: 40px;margin-top: 20px;" src="servlet/CreateVerifyImageController" onclick="changeCode()" id="login" title="看不清,换一个">
+
+            </div>
+            <br/><br/>
+            <!--input type="submit" value="提交验证"><br/><br/-->
+            <div class="button">
+                <button type="submit">开始登录</button>
+            </div>
+            <input type="checkbox" name="box" id="box" value="true" style="box-sizing: border-box; height: 20px;width: 20px;">一周内免登录
+           
+        </form>
+    </div>
+</body>
+
+</html>
